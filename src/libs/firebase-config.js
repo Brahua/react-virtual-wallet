@@ -1,6 +1,6 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
+import firebase from "firebase/app";
+import "firebase/firestore";
+import "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyA_HVVeilMyDfsIJwyAJjzIVTdLkp1cn4k",
@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "virtualwallet-d5164.appspot.com",
   messagingSenderId: "547043330870",
   appId: "1:547043330870:web:63815a26ba2b13b0570197",
-  measurementId: "G-TTYGKVTEJV"
+  measurementId: "G-TTYGKVTEJV",
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -18,8 +18,4 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export {
-  db,
-  googleAuthProvider,
-  firebase
-}
+export { db, googleAuthProvider, firebase };

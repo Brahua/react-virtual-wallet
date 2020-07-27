@@ -1,20 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600&display=swap");
 
 * {
   margin: 0;
-  font-family: 'Baloo Da 2', cursive;
+  font-family: "Baloo Da 2", cursive;
 }
 
 html {
   height: 100vh;
-  background: rgba(31,143,255,1);
-  background: -moz-linear-gradient(-45deg, rgba(31,143,255,1) 0%, rgba(16,192,224,1) 50%, rgba(0,240,192,1) 100%);
-  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(31,143,255,1)), color-stop(50%, rgba(16,192,224,1)), color-stop(100%, rgba(0,240,192,1)));
-  background: -webkit-linear-gradient(-45deg, rgba(31,143,255,1) 0%, rgba(16,192,224,1) 50%, rgba(0,240,192,1) 100%);
-  background: -o-linear-gradient(-45deg, rgba(31,143,255,1) 0%, rgba(16,192,224,1) 50%, rgba(0,240,192,1) 100%);
-  background: -ms-linear-gradient(-45deg, rgba(31,143,255,1) 0%, rgba(16,192,224,1) 50%, rgba(0,240,192,1) 100%);
-  background: linear-gradient(135deg, rgba(31,143,255,1) 0%, rgba(16,192,224,1) 50%, rgba(0,240,192,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f8fff', endColorstr='#00f0c0', GradientType=1 );  
+  background: rgba(31, 143, 255, 1);
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(31, 143, 255, 1) 0%,
+    rgba(16, 192, 224, 1) 50%,
+    rgba(0, 240, 192, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right bottom,
+    color-stop(0%, rgba(31, 143, 255, 1)),
+    color-stop(50%, rgba(16, 192, 224, 1)),
+    color-stop(100%, rgba(0, 240, 192, 1))
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(31, 143, 255, 1) 0%,
+    rgba(16, 192, 224, 1) 50%,
+    rgba(0, 240, 192, 1) 100%
+  );
+  background: -o-linear-gradient(
+    -45deg,
+    rgba(31, 143, 255, 1) 0%,
+    rgba(16, 192, 224, 1) 50%,
+    rgba(0, 240, 192, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    -45deg,
+    rgba(31, 143, 255, 1) 0%,
+    rgba(16, 192, 224, 1) 50%,
+    rgba(0, 240, 192, 1) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(31, 143, 255, 1) 0%,
+    rgba(16, 192, 224, 1) 50%,
+    rgba(0, 240, 192, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f8fff', endColorstr='#00f0c0', GradientType=1 );
 }
 
 body {
@@ -22,17 +53,17 @@ body {
 }
 
 .primary-color {
-  color: $first-color-theme
+  color: $first-color-theme;
 }
 
 .second-color {
-  color: $second-color-theme
+  color: $second-color-theme;
 }
 
 .black-color {
-  color: $color-black
+  color: $color-black;
 }
 
 .grey-color {
-  color: $color-light-grey
+  color: $color-light-grey;
 }

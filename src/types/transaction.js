@@ -1,4 +1,4 @@
-export const transactionType =  {
+export const transactionType = {
   INCOME: 1,
-  EXPENSE: 2
-}
+  EXPENSE: 2,
+};

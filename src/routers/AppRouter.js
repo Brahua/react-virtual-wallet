@@ -8,6 +8,7 @@ import { firebase } from "../config/firebase-config";
 import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 import Loading from "../components/Loading";
+import Layout from "../containers/layout/Layout";
 
 export default function AppRouter() {
   const dispatch = useDispatch();
@@ -36,12 +37,7 @@ export default function AppRouter() {
       <div>
         <Switch>
           <PublicRoute path="/auth" component={AuthRouter} isAuthenticated={isLoggedIn} />
-          <PrivateRoute
-            exact
-            path="/"
-            component={Dashboard}
-            isAuthenticated={isLoggedIn}
-          />
+          <PrivateRoute exact path="/" component={Layout} isAuthenticated={isLoggedIn} />
           <Redirect to="/auth/login" />
         </Switch>
       </div>

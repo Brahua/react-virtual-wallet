@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import "bootstrap/dist/css/bootstrap.css";
-import "rsuite/dist/styles/rsuite-default.css";
 import "./styles/style.scss";
 
 ReactDOM.render(<App />, document.getElementById("root"));

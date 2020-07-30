@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import Login from "../containers/auth/login/Login";
-import Register from "../containers/auth/register/Register";
+import Login from "./../containers/auth/components/Login";
+import Register from "./../containers/auth/components/Register";
 
 export default function AuthRouter() {
   return (

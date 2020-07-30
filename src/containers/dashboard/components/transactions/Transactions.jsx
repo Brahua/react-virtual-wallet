@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import TransactionItem from "./TransactionItem";
-import "./Transactions.scss";
+import "./../../styles/Transactions.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { TransactionActions } from "../../../../redux/transaction/actions";
+import { TransactionActions } from "../../../../store/transaction/actions";
 
 export default function Transactions() {
   const dispatch = useDispatch();

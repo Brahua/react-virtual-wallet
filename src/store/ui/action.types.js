@@ -1,0 +1,4 @@
+export const UI_SET_ERROR = "UI_SET_ERROR";
+export const UI_REMOVE_ERROR = "UI_REMOVE_ERROR";
+export const UI_START_LOADING = "UI_START_LOADING";
+export const UI_FINISH_LOADING = "UI_FINISH_LOADING";

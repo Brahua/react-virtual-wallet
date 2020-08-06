@@ -1,9 +1,14 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AuthActions } from "../../store/auth/actions";
+import LoadingSmall from "../../components/LoadingSmall";
 
-export default function Layout() {
+export default function Layout({ children }) {
   const dispatch = useDispatch();
+  const {
+    auth: { name },
+    transactions: { total },
+  } = useSelector((state) => state);
   const handleLogout = () => {
     dispatch(AuthActions.signOut());
   };
@@ -22,7 +27,7 @@ export default function Layout() {
                   className="profile__img mr-3"
                 />
                 <div className="profile__information">
-                  <h2 className="m-0">Josue Bravo</h2>
+                  <h2 className="m-0">{name}</h2>
                   <small>Saldo disponible</small>
                   <div className="d-flex align-items-center">
                     <img
@@ -31,7 +36,7 @@ export default function Layout() {
                       width="30px"
                       className="mr-2"
                     />
-                    <h3 className="m-0">S/. 1000.00</h3>
+                    <h3 className="m-0">S/. {total || <LoadingSmall />}</h3>
                   </div>
                 </div>
               </div>
@@ -49,7 +54,7 @@ export default function Layout() {
             </div>
           </div>
           <div className="col-9">
-            <section className="main"></section>
+            <section className="main">{children}</section>
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import { firebase, googleAuthProvider } from "../config/firebase-config";
 export const AUTH_API = {
   signInWithEmailAndPassword: async (email, password, login) => {
     const { user } = await firebase.auth().signInWithEmailAndPassword(email, password);
-    console.log(user);
     login(user);
   },
 
@@ -20,5 +19,8 @@ export const AUTH_API = {
     login(user);
   },
 
-  signOut: async () => await firebase.auth().signOut(),
+  signOut: async (logout) => {
+    await firebase.auth().signOut();
+    logout();
+  },
 };

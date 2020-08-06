@@ -2,6 +2,7 @@ import { LOGIN, REGISTER, LOGOUT } from "./action.type";
 import { MessageUtil } from "../../utils/message-util";
 import { REMOVE_ALL } from "../transaction/action.types";
 import { AUTH_API } from "../../api/auth.api";
+import { TransactionActions } from "../transaction/actions";
 
 export const AuthActions = {
   signInWithEmailAndPassword: (email, password) => {
@@ -66,5 +67,5 @@ export const login = ({ uid, displayName }) => ({
 
 export const logout = (dispatch) => {
   dispatch({ type: LOGOUT });
-  dispatch({ type: REMOVE_ALL });
+  dispatch(TransactionActions.removeAll());
 };

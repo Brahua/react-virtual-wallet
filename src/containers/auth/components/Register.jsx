@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../../components/logo";
+import Logo from "../../../components/Logo";
 import "../styles/Auth.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "./../../../hooks/useForm";

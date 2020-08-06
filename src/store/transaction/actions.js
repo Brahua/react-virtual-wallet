@@ -6,6 +6,7 @@ import {
   SET_TOTAL_INCOME,
   SET_TOTAL_EXPENSE,
   SET_TOTAL,
+  REMOVE_ALL,
 } from "./action.types";
 
 export const TransactionActions = {
@@ -60,17 +61,16 @@ export const TransactionActions = {
   },
 
   delete: (transaction) => {
-    return async (getState) => {
+    return async (dispatch, getState) => {
       try {
+        MessageUtil.loading();
         const result = await MessageUtil.confirmation();
         if (result.value) {
-          MessageUtil.loading();
-
           const { uid } = getState().auth;
           await TransactionApi.delete(uid, transaction.id);
-
           MessageUtil.success("Se eliminó correctamente la transacción");
         }
+        MessageUtil.close();
       } catch (error) {
         MessageUtil.error(error.message);
       }
@@ -89,4 +89,6 @@ export const TransactionActions = {
     type: SET_TRANSACTION_ACTIVE,
     payload: transaction,
   }),
+
+  removeAll: () => ({ type: REMOVE_ALL, payload: null }),
 };

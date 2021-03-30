@@ -1,33 +1,29 @@
-import { db } from "../config/firebase-config";
-import { TransactionType } from "../const/transaction";
+import FirebaseApi from "./firebase.api";
+import { TransactionType } from "../constants/transaction.types";
 
-export const TransactionApi = {
-  get: (userId, setInformation) => {
-    db.collection(`${userId}/wallet/transactions`).onSnapshot((snapshot) => {
-      let transactions = [];
-      snapshot.forEach((doc) => {
-        transactions.push({ id: doc.id, ...doc.data() });
-      });
+export default class TransactionApi extends FirebaseApi {
+  static fetchData(userId, set) {
+    super.onSnapshot(getPathCollection(userId), (data) => {
+      let transactions = [...data];
       const [total, totalIncome, totalExpense] = getTotals(transactions);
-      setInformation(transactions, total, totalIncome, totalExpense);
+      set(transactions, total, totalIncome, totalExpense);
     });
-  },
+  }
 
-  post: async (userId, transaction) => {
-    await db.collection(`${userId}/wallet/transactions`).add(transaction);
-  },
+  static get(userId) {
+    return super.get(getPathCollection(userId), {});
+  }
 
-  put: async (userId, transaction) => {
-    await db
-      .collection(`${userId}/wallet/transactions`)
-      .doc(transaction.id)
-      .update(transaction);
-  },
+  static post(userId, transaction) {
+    return super.post(getPathCollection(userId), transaction);
+  }
 
-  delete: async (userId, transactionId) => {
-    await db.collection(`${userId}/wallet/transactions`).doc(transactionId).delete();
-  },
-};
+  static delete(userId, transactionId) {
+    return super.delete(getPathCollection(userId), transactionId);
+  }
+}
+
+const getPathCollection = (userId) => `${userId}/wallet/transactions`;
 
 const getTotals = (transactions) => {
   const totalIncome = getQuantity(transactions, TransactionType.INCOME);

@@ -1,19 +1,14 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { TransactionActions } from "../../../store/transaction/actions";
-import LoadingSmall from "../../../components/LoadingSmall";
-import { TransactionType } from "../../../const/transaction";
+import Loading from "../../../components/loading/Loading";
+import React from "react";
+import { TransactionType } from "../../../constants/transaction.types";
+import { deleteTransaction } from "../../../store/transactions/actions";
+import { useDispatch } from "react-redux";
 
-export default function TransactionList() {
+export default function TransactionList({ uid, transactions }) {
   const dispatch = useDispatch();
-  const { transactions } = useSelector((state) => state.transactions);
 
-  useEffect(() => {
-    dispatch(TransactionActions.get());
-  }, [dispatch]);
-
-  const handleDeleteTransaction = ({ id, type, quantity }) => {
-    dispatch(TransactionActions.delete({ id, type, quantity }));
+  const handleDeleteTransaction = (transaction) => {
+    dispatch(deleteTransaction({ uid, transaction }));
   };
 
   const quantityClass = (type) =>
@@ -25,7 +20,7 @@ export default function TransactionList() {
         <h1>Movimientos</h1>
         <div className="table-responsive">
           {transactions.length === 0 ? (
-            <LoadingSmall />
+            <Loading size="small" />
           ) : (
             <table className="table table-borderless table-hover">
               <thead>

@@ -1,13 +1,14 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { format } from "date-fns";
-import { TransactionType } from "../../../const/transaction";
-import { useForm } from "../../../hooks/useForm";
-import { TransactionActions } from "../../../store/transaction/actions";
+import "./../styles/TransactionForm.scss";
 
-export default function TransactionsForm({ title, typeTransaction }) {
+import React from "react";
+import { TransactionType } from "../../../constants/transaction.types";
+import { format } from "date-fns";
+import { postTransaction } from "../../../store/transactions/actions";
+import { useDispatch } from "react-redux";
+import { useForm } from "../../../hooks/useForm";
+
+export default function TransactionsForm({ title, typeTransaction, total, uid }) {
   const dispatch = useDispatch();
-  const { totalIncome, totalExpense } = useSelector((state) => state.transactions);
   const [value, handleInputChange, reset] = useForm({
     description: "",
     quantity: 0,
@@ -17,20 +18,18 @@ export default function TransactionsForm({ title, typeTransaction }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      TransactionActions.add({
-        description,
-        quantity: Number(quantity),
-        type,
-        date: format(new Date(), "dd/MM/yyyy HH:mm"),
-      })
-    );
+    const transaction = {
+      description,
+      quantity: Number(quantity),
+      type,
+      date: format(new Date(), "dd/MM/yyyy HH:mm"),
+    };
+    dispatch(postTransaction({ uid, transaction }));
     reset();
   };
 
   const buttonClass = type === TransactionType.INCOME ? "success" : "danger";
   const titleClass = type === TransactionType.INCOME ? "income" : "expense";
-  const total = type === TransactionType.INCOME ? totalIncome : totalExpense;
 
   return (
     <div className="transaction-form p-4">

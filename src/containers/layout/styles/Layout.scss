@@ -1,0 +1,18 @@
+@import "./../../../assets/styles/base/settings";
+
+.layout {
+  &__bg-principal {
+    height: 200px;
+    background-image: url("/assets/img/bg-principal.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom: 10px solid $second-color-theme;
+  }
+  &__bg-border {
+    border-bottom: 10px solid $first-color-theme;
+  }
+  &__main {
+    position: relative;
+    bottom: 100px;
+  }
+}

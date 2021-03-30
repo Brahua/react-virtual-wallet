@@ -1,26 +1,23 @@
-import { firebase, googleAuthProvider } from "../config/firebase-config";
+import FirebaseApi from "./firebase.api";
 
-export const AUTH_API = {
-  signInWithEmailAndPassword: async (email, password, login) => {
-    const { user } = await firebase.auth().signInWithEmailAndPassword(email, password);
-    login(user);
-  },
+export default class AuthApi extends FirebaseApi {
+  static onAuthStateChanged(callback) {
+    return super.onAuthStateChanged(callback);
+  }
 
-  signInWithGoogle: async (login) => {
-    const { user } = await firebase.auth().signInWithPopup(googleAuthProvider);
-    login(user);
-  },
+  static signInWithEmailAndPassword(email, password) {
+    return super.signInWithEmailAndPassword(email, password);
+  }
 
-  createUserWithEmailAndPassword: async (email, password, name, login) => {
-    const { user } = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
-    await user.updateProfile({ displayName: name });
-    login(user);
-  },
+  static signInWithGoogle() {
+    return super.signInWithGoogle();
+  }
 
-  signOut: async (logout) => {
-    await firebase.auth().signOut();
-    logout();
-  },
-};
+  static createUserWithEmailAndPassword(email, password) {
+    return super.createUserWithEmailAndPassword(email, password);
+  }
+
+  static signOut() {
+    return super.signOut();
+  }
+}
